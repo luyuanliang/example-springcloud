@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"org.web.example.springcloud.dao"})
+//@MapperScan(basePackages = {"org.web.example.springcloud.dao"})
 public class ExampleApplication {
 
     public static void main(String[] args) {
