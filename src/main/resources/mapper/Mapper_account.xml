@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.web.example.springcloud.dao.AccountDAO">
+
+    <resultMap id="AccountDO" type = "org.web.example.springcloud.domain.AccountDO">
+        <id column="account_id" property="accountId" />
+		<result column="account_name"  property="accountName"  />
+		<result column="account_no"  property="accountNo"  />
+    </resultMap>
+
+    <sql id="all_columns">
+		 account_id ,  account_name , account_no
+	</sql>
+
+    <sql id="query_condition">
+		<if test = "accountId != null " ><![CDATA[ AND account_id = #{accountId}]]></if>		
+		<if test = "accountIdList != null and accountIdList.size()!=0" >
+			AND account_id IN 
+			<foreach item="item" index="index" collection="accountIdList" open="(" separator="," close=")"> 
+			#{item} 
+			</foreach>
+		</if>
+		<if test = "accountName != null " ><![CDATA[ AND account_name = #{accountName}]]></if>		
+		<if test = "accountNameList != null and accountNameList.size()!=0" >
+			AND account_name IN 
+			<foreach item="item" index="index" collection="accountNameList" open="(" separator="," close=")"> 
+			#{item} 
+			</foreach>
+		</if>
+		<if test = "accountNo != null " ><![CDATA[ AND account_no = #{accountNo}]]></if>		
+    </sql>
+
+    <insert id="insertAccount" parameterType="org.web.example.springcloud.domain.AccountDO" useGeneratedKeys="true" keyProperty="accountId">
+		INSERT INTO account (<include refid="all_columns" />) VALUES
+		(
+		#{accountId} , #{accountName} , #{accountNo}
+		)
+    </insert>
+
+	
+    <select id="selectAccountList" resultMap="AccountDO" parameterType="org.web.example.springcloud.query.QueryAccount">
+        SELECT <include refid="all_columns" /> FROM account
+		<where>
+			  <include refid="query_condition"/>
+		</where>
+		<if test="orderByClause !=null" > ORDER BY ${orderByClause}</if>
+		<!-- add order or query info. -->
+		<![CDATA[
+
+		]]>
+		
+		<if test="startNum != null" > LIMIT #{startNum},#{pageSize}</if>
+    </select>
+
+	
+    <select id="countAccountList" resultType="int" parameterType="org.web.example.springcloud.query.QueryAccount">
+		SELECT COUNT(1) FROM account
+		<where>
+			  <include refid="query_condition"/>
+		</where>
+
+		<!-- add order or query info. -->
+		<![CDATA[
+
+		]]>
+    </select>
+
+    <select id="selectDistinctList" resultType="String" parameterType="org.web.example.springcloud.query.QueryAccount">
+        SELECT DISTINCT( ${distinct} ) FROM  account <where>  <include refid="query_condition"/> 	</where>
+    </select>
+
+    <select id="selectAccountByAccountId" resultMap="AccountDO" parameterType="Long">
+        SELECT <include refid="all_columns" /> FROM account WHERE account_id = #{accountId}
+    </select>
+
+    <update id="updateAccountByAccountId" parameterType="org.web.example.springcloud.domain.AccountDO">
+        UPDATE account
+		<set>
+			<if test="accountName!=null"><![CDATA[account_name=#{accountName},]]></if>
+			<if test="accountNo!=null"><![CDATA[account_no=#{accountNo},]]></if>
+		</set>
+
+        <![CDATA[ WHERE  account_id = #{accountId} ]]>
+
+      </update>
+
+</mapper>
+

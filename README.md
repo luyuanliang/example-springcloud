@@ -6,4 +6,10 @@ http://localhost:8080/testParam/twoParams?aa&dogAge=33&dogName=旺旺&studentNam
 http://localhost:8080/freemarker/sayFreeMarker
 
 验证Graalvm
+native-image在Windows中 运行GraalVM的步骤
+https://blog.csdn.net/cunxiedian8614/article/details/105698258/
+
+http://localhost:8087/account/selectAccountByAccountId?accountId=1
+
+
 
