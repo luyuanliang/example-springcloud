@@ -28,11 +28,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/hikari-cp/hikari-cp -->
-        <dependency>
-            <groupId>hikari-cp</groupId>
-            <artifactId>hikari-cp</artifactId>
-            <version>2.13.0</version>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -55,7 +50,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.29</version>
+            <version>8.0.21</version>
+            <!-- <version>5.1.29</version> -->
         </dependency>
 
 
