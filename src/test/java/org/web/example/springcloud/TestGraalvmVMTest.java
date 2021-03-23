@@ -6,6 +6,8 @@ import java.util.concurrent.*;
 
 public class TestGraalvmVMTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        System.out.println(System.getProperty("java.version")+"  begin.....");
+        new JVMResource().printSummary();
         int count = 5000;
         int executeTimes = 1000;
         ExecutorService executorService = Executors.newFixedThreadPool(1000);
@@ -27,6 +29,7 @@ public class TestGraalvmVMTest {
             }
         }
         System.out.println("end");
+        System.exit(1);
     }
 
 }
