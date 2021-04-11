@@ -28,6 +28,8 @@ public class I18NController {
             message = messageSource.getMessage("code", null, Locale.CHINA);
         } else if ("en".equals(lang)) {
             message = messageSource.getMessage("code", null, Locale.US);
+        } else {
+            message = messageSource.getMessage("code", null, null);
         }
 
 
