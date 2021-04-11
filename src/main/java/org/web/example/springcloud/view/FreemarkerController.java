@@ -15,6 +15,7 @@ public class FreemarkerController {
         model.addAttribute("account","freemarker");
         StudentDO studentDO  = new StudentDO();
         studentDO.setAge(2);
+
         studentDO.setHomeaddress("China");
         model.addAttribute("student",studentDO);
         return "sayFreeMarker";
