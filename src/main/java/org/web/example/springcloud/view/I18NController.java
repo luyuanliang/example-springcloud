@@ -24,12 +24,13 @@ public class I18NController {
         String lang = request.getParameter("lang");
         System.out.println("Lang is :    >>> " + lang);
         String message = null;
+        String[] args = new String[]{"恒生"};
         if ("zh".equals(lang)) {
-            message = messageSource.getMessage("code", null, Locale.CHINA);
+            message = messageSource.getMessage("code", args, Locale.CHINA);
         } else if ("en".equals(lang)) {
-            message = messageSource.getMessage("code", null, Locale.US);
+            message = messageSource.getMessage("code", args, Locale.US);
         } else {
-            message = messageSource.getMessage("code", null, null);
+            message = messageSource.getMessage("code", args, null);
         }
 
 
