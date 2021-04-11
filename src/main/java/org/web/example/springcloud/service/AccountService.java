@@ -12,7 +12,6 @@ import java.util.HashMap;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import org.apache.log4j.Logger;
 import org.web.example.springcloud.query.QueryAccount;
 import org.web.example.springcloud.domain.AccountDO;
 import org.web.example.springcloud.dao.AccountDAO;
@@ -21,7 +20,6 @@ import org.web.exception.ServiceException;
 @Service("accountService")
 public class AccountService {
 
-	private static Logger logger = Logger.getLogger(AccountService.class);
 
 	@Resource
 	private AccountDAO accountDAO;
