@@ -32,8 +32,6 @@ public class I18NController {
         } else {
             message = messageSource.getMessage("code", args, null);
         }
-
-
         return message;
     }
 }
